@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlackBite - Hamburgueria & Pizzaria</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0a0a0a;
+            color: #f5f5f5;
+            scroll-behavior: smooth;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+        }
+        
+        .flavor-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #d4af37;
+            color: #000;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.7);
+        }
+        
+        .gold-divider {
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            margin: 20px auto;
+            width: 80%;
+        }
+        
+        .testimonial-card {
+            background: rgba(20, 20, 20, 0.8);
+            border-left: 3px solid #d4af37;
+        }
+        
+        .footer-link:hover {
+            color: #d4af37;
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(212, 175, 55, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header class="fixed w-full z-50 bg-black bg-opacity-90">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <i class="fas fa-hamburger text-2xl text-gold-500 mr-2" style="color: #d4af37;"></i>
+                    <span class="text-2xl font-bold" style="color: #d4af37;">Black<span class="text-white">Bite</span></span>
+                </div>
+                
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-white hover:text-yellow-400 transition">Home</a>
+                    <a href="#menu" class="text-white hover:text-yellow-400 transition">Cardápio</a>
+                    <a href="#about" class="text-white hover:text-yellow-400 transition">Sobre</a>
+                    <a href="#testimonials" class="text-white hover:text-yellow-400 transition">Avaliações</a>
+                    <a href="#contact" class="text-white hover:text-yellow-400 transition">Contato</a>
+                </nav>
+                
+                <div class="flex items-center space-x-4">
+                    <a href="tel:+5511999999999" class="hidden md:block text-white hover:text-yellow-400 transition">
+                        <i class="fas fa-phone-alt mr-1"></i> (11) 99999-9999
+                    </a>
+                    <button class="bg-yellow-600 hover:bg-yellow-700 text-black font-bold py-2 px-6 rounded-full transition">
+                        Delivery
+                    </button>
+                    <button class="md:hidden text-white">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero flex items-center justify-center text-center">
+        <div class="container mx-auto px-6">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+                <span style="color: #d4af37;">SABORES</span> QUE <span class="text-white">EXPLODEM</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-10 max-w-2xl mx-auto">
+                Hamburgers artesanais e pizzas premium feitas com ingredientes selecionados
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <a href="#menu" class="bg-yellow-600 hover:bg-yellow-700 text-black font-bold py-3 px-8 rounded-full text-lg transition transform hover:scale-105">
+                    Ver Cardápio
+                </a>
+                <a href="#contact" class="border-2 border-yellow-600 text-yellow-600 hover:bg-yellow-600 hover:text-black font-bold py-3 px-8 rounded-full text-lg transition transform hover:scale-105">
+                    Faça seu Pedido
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Offers -->
+    <section class="py-16 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">
+                <span style="color: #d4af37;">PROMOÇÕES</span> ESPECIAIS
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Offer 1 -->
+                <div class="bg-black rounded-lg overflow-hidden border border-gray-800 hover:border-yellow-500 transition relative">
+                    <div class="flavor-badge">
+                        -20%
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=999&q=80" alt="Black Burger" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Black Burger</h3>
+                        <p class="text-gray-400 mb-4">Pão preto, carne 180g, queijo cheddar, bacon crocante e molho especial</p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-gray-400 line-through">R$ 32,90</span>
+                                <span class="text-yellow-500 font-bold text-xl ml-2">R$ 26,32</span>
+                            </div>
+                            <button class="bg-yellow-600 hover:bg-yellow-700 text-black font-bold py-2 px-4 rounded-full text-sm transition">
+                                Pedir Agora
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Offer 2 -->
+                <div class="bg-black rounded-lg overflow-hidden border border-gray-800 hover:border-yellow-500 transition relative">
+                    <div class="flavor-badge">
+                        2x1
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Pizza Margherita" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Pizza Margherita</h3>
+                        <p class="text-gray-400 mb-4">Molho de tomate, mussarela de búfala, manjericão fresco e azeite</p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-gray-400 line-through">R$ 59,90</span>
+                                <span class="text-yellow-500 font-bold text-xl ml-2">R$ 59,90</span>
+                            </div>
+                            <button class="bg-yellow-600 hover:bg-yellow-700 text-black font-bold py-2 px-4 rounded-full text-sm transition">
+                                Pedir Agora
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Offer 3 -->
+                <div class="bg-black rounded-lg overflow-hidden border border-gray-800 hover:border-yellow-500 transition relative">
+                    <div class="flavor-badge">
+                        Novo
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1596662951482-0c4ba74a6df6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Combo Família" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Combo Família</h3>
+                        <p class="text-gray-400 mb-4">2 pizzas grandes + 2 hamburgers + 2 refrigerantes 2L</p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-gray-400 line-through">R$ 129,90</span>
+                                <span class="text-yellow-500 font-bold text-xl ml-2">R$ 99,90</span>
+                            </div>
+                            <button class="bg-yellow-600 hover:bg-yellow-700 text-black font-bold py-2 px-4 rounded-full text-sm transition">
+                                Pedir Agora
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-16 bg-black">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-4">
+                NOSSO <span style="color: #d4af37;">CARDÁPIO</span>
+            </h2>
+            <p class="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
+                Explore nossa seleção premium de hamburgers artesanais e pizzas feitas com ingredientes da mais alta qualidade
+            </p>
+            
+            <div class="flex justify-center mb-12">
+                <div class="inline-flex rounded-md shadow-sm">
+                    <button id="burgers-tab" class="px-6 py-3 text-sm font-medium rounded-l-lg bg-yellow-600 text-black">
+                        Hamburgers
+                    </button>
+                    <button id="pizzas-tab" class="px-6 py-3 text-sm font-medium rounded-r-lg bg-gray-800 text-white hover:bg-gray-700">
+                        Pizzas
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Burgers Menu -->
+            <div id="burgers-menu" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Burger 1 -->
+                <div class="bg-gray-900 rounded-lg overflow-hidden border border-gray-800 menu-item transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1965&q=80" alt="Classic Burger" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold">Black Classic</h3>
+                            <span class="text-yellow-500 font-bold">R$ 29,90</span>
+                        </div>
+                        <p class="text-gray-400 mb-4">Pão brioche, carne 180g, queijo cheddar, alface, tomate e molho especial</p>
+                        <button class="w-full bg-yellow-600 hover:bg-yellow-700 text-black font-bold py-2 px-4 rounded-full transition">
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Burger 2 -->
+                <div class="bg-gray-900 rounded-lg overflow-hidden border border-gray-800 menu-item transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1561758033-d89a9ad46330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Bacon Burger" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold">Bacon Explosion</h3>
+                            <span class="text-yellow-500 font-bold">R$ 34,90</span>
+                        </div>
+                        <p class="text-gray-400 mb-4">Pão australiano, carne 200g, queijo emmental, bacon crocante, cebola caramelizada</p>
+                        <button class="w-full bg-yellow-600 hover:bg-yellow-700 text-black font-bold py-2 px-4 rounded-full transition">
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Burger 3 -->
+                <div class="bg-gray-900 rounded-lg overflow-hidden border border-gray-800 menu-item transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=999&q=80" alt="Veggie Burger" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold">Black Veggie</h3>
+                            <span class="text-yellow-500 font-bold">R$ 27,90</span>
+                        </div>
+                        <p class="text-gray-400 mb-4">Pão integral, hambúrguer de grão-de-bico, queijo vegano, abacate e molho de iogurte</p>
+                        <button class="w-full bg-yellow-600 hover:bg-yellow-700 text-black font-bold py-2 px-4 rounded-full transition">
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pizzas Menu (Hidden by default) -->
+            <div id="pizzas-menu" class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Pizza 1 -->
+                <div class="bg-gray-900 rounded-lg overflow-hidden border border-gray-800 menu-item transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Pepperoni Pizza" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold">Pepperoni Black</h3>
+                            <span class="text-yellow-500 font-bold">R$ 59,90</span>
+                        </div>
+                        <p class="text-gray-400 mb-4">Molho de tomate, mussarela especial, pepperoni premium e orégano</p>
+                        <button class="w-full bg-yellow-600 hover:bg-yellow-700 text-black font-bold py-2 px-4 rounded-full transition">
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Pizza 2 -->
+                <div class="bg-gray-900 rounded-lg overflow-hidden border border-gray-800 menu-item transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1593504049359-74330189a345?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2127&q=80" alt="Margherita Pizza" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold">Margherita Gold</h3>
+                            <span class="text-yellow-500 font-bold">R$ 54,90</span>
+                        </div>
+                        <p class="text-gray-400 mb-4">Molho de tomate, mussarela de búfala, manjericão fresco e azeite trufado</p>
+                        <button class="w-full bg-yellow-600 hover:bg-yellow-700 text-black font-bold py-2 px-4 rounded-full transition">
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Pizza 3 -->
+                <div class="bg-gray-900 rounded-lg overflow-hidden border border-gray-800 menu-item transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1601924582970-9238bcb495d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1978&q=80" alt="Quatro Queijos" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold">4 Queijos</h3>
+                            <span class="text-yellow-500 font-bold">R$ 62,90</span>
+                        </div>
+                        <p class="text-gray-400 mb-4">Molho de tomate, mussarela, gorgonzola, parmesão e provolone</p>
+                        <button class="w-full bg-yellow-600 hover:bg-yellow-700 text-black font-bold py-2 px-4 rounded-full transition">
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block border-2 border-yellow-600 text-yellow-600 hover:bg-yellow-600 hover:text-black font-bold py-3 px-8 rounded-full transition">
+                    Ver Cardápio Completo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <h2 class="text-3xl font-bold mb-6">
+                        <span style="color: #d4af37;">NOSSA</span> HISTÓRIA
+                    </h2>
+                    <p class="text-gray-400 mb-4">
+                        Fundada em 2015, a BlackBite nasceu da paixão por hamburgers artesanais e pizzas premium. Nossa missão é oferecer experiências gastronômicas memoráveis, combinando técnicas tradicionais com toques inovadores.
+                    </p>
+                    <p class="text-gray-400 mb-6">
+                        Todos os nossos ingredientes são cuidadosamente selecionados, desde os pães artesanais até os queijos especiais. Nossas carnes são provenientes de fornecedores locais que compartilham nosso compromisso com a qualidade.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center">
+                            <div class="bg-yellow-600 rounded-full p-2 mr-3">
+                                <i class="fas fa-check text-black"></i>
+                            </div>
+                            <span class="text-white">Ingredientes Premium</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-yellow-600 rounded-full p-2 mr-3">
+                                <i class="fas fa-check text-black"></i>
+                            </div>
+                            <span class="text-white">Receitas Exclusivas</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-yellow-600 rounded-full p-2 mr-3">
+                                <i class="fas fa-check text-black"></i>
+                            </div>
+                            <span class="text-white">Atendimento Personalizado</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-yellow-600 rounded-full p-2 mr-3">
+                                <i class="fas fa-check text-black"></i>
+                            </div>
+                            <span class="text-white">Ambiente Aconchegante</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 relative">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Restaurant Interior" class="rounded-lg shadow-2xl">
+                    <div class="absolute -bottom-6 -left-6 bg-yellow-600 text-black p-4 rounded-lg shadow-lg hidden md:block">
+                        <div class="text-4xl font-bold">8+</div>
+                        <div class="text-sm">Anos de Experiência</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-16 bg-black">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">
+                O QUE <span style="color: #d4af37;">DIZEM</span> SOBRE NÓS
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Customer" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Ana Carolina</h4>
+                            <div class="flex text-yellow-500">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-400">
+                        "Os hamburgers da BlackBite são incríveis! A combinação de sabores e a qualidade dos ingredientes fazem toda diferença. Meu favorito é o Bacon Explosion."
+                    </p>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Customer" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Ricardo Silva</h4>
+                            <div class="flex text-yellow-500">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-400">
+                        "As pizzas são perfeitas! Crocantes, saborosas e com ingredientes de primeira. A Margherita Gold é minha preferida, o azeite trufado dá um toque especial."
+                    </p>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Customer" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Juliana Santos</h4>
+                            <div class="flex text-yellow-500">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-400">
+                        "Adorei o ambiente e o atendimento! O Combo Família foi perfeito para nosso encontro em família. Todos amaram e com certeza voltaremos mais vezes."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">
+                FAÇA SEU <span style="color: #d4af37;">PEDIDO</span>
+            </h2>
+            
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <h3 class="text-xl font-bold mb-4">Horário de Funcionamento</h3>
+                    <ul class="space-y-2 mb-8">
+                        <li class="flex justify-between text-gray-400">
+                            <span>Segunda a Quinta</span>
+                            <span>18:00 - 23:00</span>
+                        </li>
+                        <li class="flex justify-between text-gray-400">
+                            <span>Sexta e Sábado</span>
+                            <span>18:00 - 00:00</span>
+                        </li>
+                        <li class="flex justify-between text-gray-400">
+                            <span>Domingo</span>
+                            <span>18:00 - 22:00</span>
+                        </li>
+                    </ul>
+                    
+                    <h3 class="text-xl font-bold mb-4">Contato</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-phone-alt mr-3 text-yellow-500"></i>
+                            (11) 99999-9999
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-envelope mr-3 text-yellow-500"></i>
+                            contato@blackbite.com.br
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-map-marker-alt mr-3 text-yellow-500"></i>
+                            Rua das Delícias, 123 - São Paulo/SP
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <form class="bg-black p-8 rounded-lg">
+                        <div class="mb-4">
+                            <label class="block text-gray-400 mb-2" for="name">Nome</label>
+                            <input type="text" id="name" class="w-full bg-gray-800 border border-gray-700 rounded-lg py-2 px-4 text-white focus:outline-none focus:border-yellow-500">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-400 mb-2" for="phone">Telefone</label>
+                            <input type="tel" id="phone" class="w-full bg-gray-800 border border-gray-700 rounded-lg py-2 px-4 text-white focus:outline-none focus:border-yellow-500">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-400 mb-2" for="order">Pedido</label>
+                            <textarea id="order" rows="4" class="w-full bg-gray-800 border border-gray-700 rounded-lg py-2 px-4 text-white focus:outline-none focus:border-yellow-500"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-yellow-600 hover:bg-yellow-700 text-black font-bold py-3 px-4 rounded-lg transition">
+                            Enviar Pedido
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12 border-t border-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-8 md:mb-0">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-hamburger text-2xl text-gold-500 mr-2" style="color: #d4af37;"></i>
+                        <span class="text-2xl font-bold" style="color: #d4af37;">Black<span class="text-white">Bite</span></span>
+                    </div>
+                    <p class="text-gray-400 max-w-md">
+                        Hamburgueria e Pizzaria premium, oferecendo os melhores sabores com ingredientes selecionados e atendimento diferenciado.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h4 class="text-white font-bold mb-4">Links</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#home" class="footer-link text-gray-400 hover:text-yellow-500 transition">Home</a></li>
+                            <li><a href="#menu" class="footer-link text-gray-400 hover:text-yellow-500 transition">Cardápio</a></li>
+                            <li><a href="#about" class="footer-link text-gray-400 hover:text-yellow-500 transition">Sobre</a></li>
+                            <li><a href="#contact" class="footer-link text-gray-400 hover:text-yellow-500 transition">Contato</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-white font-bold mb-4">Redes Sociais</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="footer-link text-gray-400 hover:text-yellow-500 transition"><i class="fab fa-instagram mr-2"></i> Instagram</a></li>
+                            <li><a href="#" class="footer-link text-gray-400 hover:text-yellow-500 transition"><i class="fab fa-facebook mr-2"></i> Facebook</a></li>
+                            <li><a href="#" class="footer-link text-gray-400 hover:text-yellow-500 transition"><i class="fab fa-whatsapp mr-2"></i> WhatsApp</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-white font-bold mb-4">Pagamento</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <i class="fab fa-cc-visa text-2xl text-gray-400"></i>
+                            <i class="fab fa-cc-mastercard text-2xl text-gray-400"></i>
+                            <i class="fab fa-cc-amex text-2xl text-gray-400"></i>
+                            <i class="fab fa-cc-paypal text-2xl text-gray-400"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">
+                    &copy; 2023 BlackBite. Todos os direitos reservados.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-yellow-500 transition">Termos de Uso</a>
+                    <a href="#" class="text-gray-400 hover:text-yellow-500 transition">Política de Privacidade</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#home" class="fixed bottom-6 right-6 bg-yellow-600 text-black p-3 rounded-full shadow-lg hover:bg-yellow-700 transition pulse-animation">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script>
+        // Tab switching for menu
+        document.getElementById('burgers-tab').addEventListener('click', function() {
+            this.classList.add('bg-yellow-600', 'text-black');
+            this.classList.remove('bg-gray-800', 'text-white');
+            document.getElementById('pizzas-tab').classList.add('bg-gray-800', 'text-white');
+            document.getElementById('pizzas-tab').classList.remove('bg-yellow-600', 'text-black');
+            document.getElementById('burgers-menu').classList.remove('hidden');
+            document.getElementById('pizzas-menu').classList.add('hidden');
+        });
+        
+        document.getElementById('pizzas-tab').addEventListener('click', function() {
+            this.classList.add('bg-yellow-600', 'text-black');
+            this.classList.remove('bg-gray-800', 'text-white');
+            document.getElementById('burgers-tab').classList.add('bg-gray-800', 'text-white');
+            document.getElementById('burgers-tab').classList.remove('bg-yellow-600', 'text-black');
+            document.getElementById('pizzas-menu').classList.remove('hidden');
+            document.getElementById('burgers-menu').classList.add('hidden');
+        });
+        
+        // Mobile menu toggle would go here
+    </script>
+</body>
+</html>
